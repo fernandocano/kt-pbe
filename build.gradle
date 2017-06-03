@@ -23,7 +23,7 @@ apply plugin: 'pmd'
 apply plugin: 'application'
 
 group = 'com.muk'
-version = '1.0.0'
+version = project.getProperty('v');
 archivesBaseName = 'kt-pbe'
 mainClassName = 'com.muk.app.MukMain'
 

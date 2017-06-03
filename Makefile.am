@@ -4,22 +4,22 @@
 
 
 epack:
-	./gradlew epack --no-daemon --gradle-user-home="WORKDIR"
+	./gradlew epack --no-daemon --gradle-user-home="WORKDIR" -Pv=$(VERSION)
 
 build:
-	./gradlew build -x test
+	./gradlew build -x test -Pv=$(VERSION)
 
 eclipse:
-	./gradlew clean cleanEclipse eclipse
+	./gradlew clean cleanEclipse eclipse -Pv=$(VERSION)
 
 clean-local:
-	./gradlew clean
+	./gradlew clean -Pv=$(VERSION)
 
 appRun:
-	exec ./gradlew run --no-daemon
+	exec ./gradlew run --no-daemon -Pv=$(VERSION)
 
 appDebug:
-	exec ./gradlew debug --no-daemon
+	exec ./gradlew debug --no-daemon -Pv=$(VERSION)
 
 install-exec-local:
 	cat build/distributions/$(PACKAGE)-$(VERSION).tar | $(am__untar) -C $(DESTDIR)$(prefix:/%=%)/
