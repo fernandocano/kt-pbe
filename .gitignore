@@ -1,0 +1,12 @@
+**/.classpath
+**/.project
+**/.settings
+**/build
+**/bin
+.gradle/
+
+# autotools
+autom4te.cache/
+Makefile
+config.log
+config.status
