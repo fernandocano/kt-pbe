@@ -87,4 +87,10 @@ tasks.withType(Test) {
 	reports.html.destination = file("${reporting.baseDir}/${name}")
 }
 
+distributions {
+	main {
+		baseName = 'kt-pbe'
+	}
+}
+
 distZip.enabled = false
