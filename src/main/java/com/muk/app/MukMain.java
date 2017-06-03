@@ -37,7 +37,7 @@ public class MukMain {
 					ops.put("password", args[i+1]);
 					break;
 				case "-alias":
-					ops.put("alias", args[i+i]);
+					ops.put("alias", args[i+1]);
 					break;
 				case "-secret":
 					ops.put("secret", args[i+1]);
