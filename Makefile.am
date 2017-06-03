@@ -33,4 +33,4 @@ CONF_ENV = prod
 all-local: epack
 endif
 
-.PHONY: build eclipse appRun appDebug
+.PHONY: build epack eclipse appRun appDebug

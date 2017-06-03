@@ -567,7 +567,7 @@ install-exec-local:
 @DEBUG_TRUE@all-local: build
 @DEBUG_FALSE@all-local: epack
 
-.PHONY: build eclipse appRun appDebug
+.PHONY: build epack eclipse appRun appDebug
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
