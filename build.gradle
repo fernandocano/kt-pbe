@@ -63,6 +63,15 @@ task wrapper(type: Wrapper) {
 	gradleVersion = '3.4.1'
 }
 
+// epack alludes to a task that packages a project to be used in a protage ebuild
+task epack(dependsOn: build) {
+	doLast {
+		println '*****'
+		println '\tProduct build ' + version
+		println '*****'
+	}
+}
+
 /* source artifacts */
 task jarSources(type:Jar) {
 	from sourceSets.main.allSource
