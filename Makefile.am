@@ -4,7 +4,7 @@
 
 
 epack:
-	./gradlew epack --no-daemon --gradle-user-home="WORKDIR" -Pv=$(VERSION)
+	./gradlew epack --no-daemon --gradle-user-home="WORKDIR" -Pv=$(VERSION) && touch epack
 
 build:
 	./gradlew build -x test -Pv=$(VERSION)
@@ -33,4 +33,4 @@ CONF_ENV = prod
 all-local: epack
 endif
 
-.PHONY: build epack eclipse appRun appDebug
+.PHONY: build eclipse appRun appDebug

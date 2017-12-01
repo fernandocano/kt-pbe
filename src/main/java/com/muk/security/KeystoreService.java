@@ -7,6 +7,7 @@
 package com.muk.security;
 
 import java.io.IOException;
+import java.nio.file.Path;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 import java.security.UnrecoverableEntryException;
@@ -23,4 +24,7 @@ public interface KeystoreService {
 
 	void addPBEKey(String alias, String sensitiveValue) throws KeyStoreException, CertificateException,
 			InvalidKeySpecException, NoSuchAlgorithmException, IOException;
+
+	void addPBEKey(String alias, Path keyFile) throws KeyStoreException, CertificateException, InvalidKeySpecException,
+			NoSuchAlgorithmException, IOException;
 }

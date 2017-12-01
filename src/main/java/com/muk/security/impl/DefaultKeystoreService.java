@@ -1,14 +1,15 @@
 /*******************************************************************************
  * Copyright (C) 2017 mizuuenikaze inc.
- *  
+ *
  *  This software may be modified and distributed under the terms
  *  of the MIT license.  See the LICENSE file for details.
  *******************************************************************************/
-package com.muk.secuity.impl;
+package com.muk.security.impl;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
@@ -63,8 +64,23 @@ public class DefaultKeystoreService implements KeystoreService {
 	@Override
 	public void addPBEKey(String alias, String sensitiveValue) throws KeyStoreException, CertificateException,
 			InvalidKeySpecException, NoSuchAlgorithmException, IOException {
+
+		addPBEKeyInternal(alias, sensitiveValue.toCharArray());
+	}
+
+	@Override
+	public void addPBEKey(String alias, Path keyFile) throws KeyStoreException, CertificateException,
+			InvalidKeySpecException, NoSuchAlgorithmException, IOException {
+		String privateKey = new String(Files.readAllBytes(keyFile), StandardCharsets.UTF_8);
+		privateKey = privateKey.replace("\n", "\\n");
+		addPBEKeyInternal(alias, privateKey.toCharArray());
+
+	}
+
+	private void addPBEKeyInternal(String alias, char[] sensitiveValue) throws KeyStoreException, CertificateException,
+			InvalidKeySpecException, NoSuchAlgorithmException, IOException {
 		final SecretKeyFactory factory = SecretKeyFactory.getInstance("PBE");
-		final SecretKey generatedSecret = factory.generateSecret(new PBEKeySpec(sensitiveValue.toCharArray()));
+		final SecretKey generatedSecret = factory.generateSecret(new PBEKeySpec(sensitiveValue));
 
 		final KeyStore ks = KeyStore.getInstance("JCEKS");
 
